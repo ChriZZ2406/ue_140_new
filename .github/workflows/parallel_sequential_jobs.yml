@@ -1,0 +1,19 @@
+name: Parallel and Sequential Jobs
+on: [push]
+jobs:
+  job1:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Hello from Job 1"
+  job2:
+    runs-on: self-hosted
+    steps:
+      - run: echo "Hello from Job 2"
+  job3:
+    runs-on: self-hosted
+    needs: job1
+    steps:
+      - run: echo "Hello from Job 3 (after Job 1)"
+
+#job1 und job2 werden parallel ausgeführt, da keine Abhängigkeiten zwischen ihnen bestehen
+#job3 wird nach job1 ausgeführt, da es mit needs: job1 spezifiziert ist
