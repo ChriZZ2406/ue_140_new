@@ -1,0 +1,13 @@
+name: Self-Hosted Runner Demo
+on: [push]
+jobs:
+  Explore-My-Runner:
+    runs-on: self-hosted
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by ${{ github.actor }}!"
+      - uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: |
+          ls ${{ github.workspace }}
